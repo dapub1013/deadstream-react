@@ -4,7 +4,7 @@ A dedicated Raspberry Pi device for streaming Grateful Dead concerts from the In
 
 ## Tech Stack
 
-- React 18 + TypeScript
+- React 19 + TypeScript
 - Vite
 - Tailwind CSS
 - Dexie.js (IndexedDB)
