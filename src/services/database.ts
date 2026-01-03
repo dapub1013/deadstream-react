@@ -1,5 +1,5 @@
-import Dexie, { Table } from 'dexie';
-import { Show } from '../types/show';
+import Dexie, { type Table } from 'dexie';
+import type { Show } from '../types/show';
 
 class DeadStreamDatabase extends Dexie {
   shows!: Table<Show, number>;

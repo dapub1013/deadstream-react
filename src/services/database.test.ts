@@ -8,7 +8,7 @@ import {
   getTopRatedShows,
   getShowCount 
 } from './database';
-import { Show } from '../types/show';
+import type { Show } from '../types/show';
 
 describe('Database', () => {
   beforeEach(async () => {
