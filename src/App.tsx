@@ -3,16 +3,31 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Button } from './components/atoms/Button';
+import { useDatabase } from './hooks/useDatabase';
+import { DatabaseSetup } from './components/screens/DatabaseSetup';
 
 function App() {
   const [count, setCount] = useState(0)
+  const { isReady, showCount } = useDatabase();
+
+  // Show database setup screen if database is empty
+  if (!isReady) {
+    return <DatabaseSetup />;
+  }
 
   return (
     <>
-  <Button size="large" onClick={() => alert('Clicked!')}>
-    Test Button
-  </Button>
-  <div>
+      <div className="mb-4 p-4 bg-gray-100 rounded">
+        <h2 className="text-lg font-bold">DeadStream Database</h2>
+        <p>Status: {isReady ? 'Ready' : 'Empty'}</p>
+        <p>Shows: {showCount}</p>
+      </div>
+
+      <Button size="large" onClick={() => alert('Clicked!')}>
+        Test Button
+      </Button>
+
+      <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

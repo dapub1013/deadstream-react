@@ -1,12 +1,14 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { 
-  db, 
-  addShow, 
+import {
+  db,
+  addShow,
   getShowByIdentifier,
   getShowsByDate,
   getShowsByYear,
   getTopRatedShows,
-  getShowCount 
+  getShowCount,
+  searchByVenue,
+  clearAllShows
 } from './database';
 import type { Show } from '../types/show';
 
@@ -184,7 +186,7 @@ describe('Database', () => {
 
   it('counts shows correctly', async () => {
     expect(await getShowCount()).toBe(0);
-    
+
     await addShow({
       identifier: 'show1',
       date: '1977-05-08',
@@ -197,7 +199,109 @@ describe('Database', () => {
       taper: null,
       lastUpdated: new Date().toISOString()
     });
-    
+
     expect(await getShowCount()).toBe(1);
+  });
+
+  it('searches shows by venue name', async () => {
+    await addShow({
+      identifier: 'show1',
+      date: '1977-05-08',
+      venue: 'Winterland Arena',
+      city: 'San Francisco',
+      state: 'CA',
+      avgRating: 4.8,
+      numReviews: 100,
+      sourceType: null,
+      taper: null,
+      lastUpdated: new Date().toISOString()
+    });
+
+    await addShow({
+      identifier: 'show2',
+      date: '1977-06-09',
+      venue: 'Winterland Ballroom',
+      city: 'San Francisco',
+      state: 'CA',
+      avgRating: 4.7,
+      numReviews: 90,
+      sourceType: null,
+      taper: null,
+      lastUpdated: new Date().toISOString()
+    });
+
+    await addShow({
+      identifier: 'show3',
+      date: '1977-05-08',
+      venue: 'Cornell University',
+      city: 'Ithaca',
+      state: 'NY',
+      avgRating: 4.9,
+      numReviews: 200,
+      sourceType: null,
+      taper: null,
+      lastUpdated: new Date().toISOString()
+    });
+
+    const winterlandShows = await searchByVenue('Winterland');
+    expect(winterlandShows).toHaveLength(2);
+    expect(winterlandShows.every(s => s.venue.startsWith('Winterland'))).toBe(true);
+
+    const cornellShows = await searchByVenue('Cornell');
+    expect(cornellShows).toHaveLength(1);
+    expect(cornellShows[0].venue).toBe('Cornell University');
+  });
+
+  it('searches venues case-insensitively', async () => {
+    await addShow({
+      identifier: 'show1',
+      date: '1977-05-08',
+      venue: 'Fillmore East',
+      city: 'New York',
+      state: 'NY',
+      avgRating: 4.8,
+      numReviews: 100,
+      sourceType: null,
+      taper: null,
+      lastUpdated: new Date().toISOString()
+    });
+
+    const results = await searchByVenue('fillmore');
+    expect(results).toHaveLength(1);
+    expect(results[0].venue).toBe('Fillmore East');
+  });
+
+  it('clears all shows from database', async () => {
+    await addShow({
+      identifier: 'show1',
+      date: '1977-05-08',
+      venue: 'Test Venue 1',
+      city: 'City',
+      state: 'NY',
+      avgRating: 4.8,
+      numReviews: 100,
+      sourceType: null,
+      taper: null,
+      lastUpdated: new Date().toISOString()
+    });
+
+    await addShow({
+      identifier: 'show2',
+      date: '1977-06-09',
+      venue: 'Test Venue 2',
+      city: 'City',
+      state: 'CA',
+      avgRating: 4.7,
+      numReviews: 90,
+      sourceType: null,
+      taper: null,
+      lastUpdated: new Date().toISOString()
+    });
+
+    expect(await getShowCount()).toBe(2);
+
+    await clearAllShows();
+
+    expect(await getShowCount()).toBe(0);
   });
 });
