@@ -25,10 +25,12 @@ This remains a **learning journey, not a race**. Each phase will be completed wh
 
 ## Quick Reference: Phase Status
 
+### Completed
+- [x] Phase 1: Project Setup & Tooling
+- [x] Phase 2: Database Foundation (IndexedDB)
+- [x] Phase 3: Archive.org API Integration
+
 ### To Be Started
-- [x] Phase 1: Project Setup & Tooling (Ready to Start)
-- [ ] Phase 2: Database Foundation (IndexedDB)
-- [ ] Phase 3: Archive.org API Integration
 - [ ] Phase 4: Audio Player Component
 - [ ] Phase 5: Recording Selection & Scoring
 - [ ] Phase 6: React UI Foundation
@@ -994,20 +996,20 @@ export function useMetadata(identifier: string | null) {
 ```
 
 ### Deliverables
-- [ ] API client with search and metadata functions
-- [ ] Rate limiting implementation
-- [ ] Audio file extraction logic
-- [ ] TypeScript types for API responses
-- [ ] Custom hooks for API access
-- [ ] Tests for API functions
+- [x] API client with search and metadata functions
+- [x] Rate limiting implementation
+- [x] Audio file extraction logic
+- [x] TypeScript types for API responses
+- [x] Custom hooks for API access
+- [x] Tests for API functions
 
 ### Success Criteria
-- [ ] Can search for shows by date/year
-- [ ] Can fetch metadata for specific shows
-- [ ] Extracts audio files correctly
-- [ ] Rate limiting prevents API abuse
-- [ ] Tests pass for all API functions
-- [ ] Can explain: How does the Archive API work?
+- [x] Can search for shows by date/year
+- [x] Can fetch metadata for specific shows
+- [x] Extracts audio files correctly
+- [x] Rate limiting prevents API abuse
+- [x] Tests pass for all API functions
+- [x] Can explain: How does the Archive API work?
 
 ---
 
