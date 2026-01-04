@@ -15,7 +15,7 @@ This file provides essential context for AI assistants (Claude Code, GitHub Copi
 - **Target:** Raspberry Pi 4 (4GB) with 7" touch display (1280×720)
 - **Database:** IndexedDB via Dexie.js (stores 15K shows locally)
 - **Audio:** HTML5 Audio API (streams from archive.org)
-- **Status:** Phase 4 Complete - Audio Player Component
+- **Status:** Phase 5 Complete - Recording Selection & Scoring
 
 ---
 

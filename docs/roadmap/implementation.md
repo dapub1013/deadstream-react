@@ -30,9 +30,9 @@ This remains a **learning journey, not a race**. Each phase will be completed wh
 - [x] Phase 2: Database Foundation (IndexedDB)
 - [x] Phase 3: Archive.org API Integration
 - [x] Phase 4: Audio Player Component
+- [x] Phase 5: Recording Selection & Scoring
 
 ### To Be Started
-- [ ] Phase 5: Recording Selection & Scoring
 - [ ] Phase 6: React UI Foundation
 - [ ] Phase 7: Browse Screen Implementation
 - [ ] Phase 8: Player Screen Implementation
@@ -1354,16 +1354,65 @@ describe('AudioPlayer', () => {
 
 ---
 
-*(Phases 5-12 would continue with similar detail...)*
+## Phase 5: Recording Selection & Scoring
+
+**Goal:** Implement smart recording selection algorithm
+**Prerequisites:** Phase 4 complete
+**Estimated Time:** 4-6 hours
+**Actual Time:** ~2 hours
+
+### Learning Topics
+- Algorithm porting from Python to TypeScript
+- Weighted scoring systems
+- localStorage for preferences
+- React hooks for state management
+
+### Deliverables
+- [x] Scoring engine with 5 weighted components
+- [x] Three built-in presets (balanced, audiophile, crowd_favorite)
+- [x] Custom weight support with validation
+- [x] Preference management with localStorage persistence
+- [x] React hooks for component integration
+- [x] Comprehensive test suite (76 tests)
+- [x] Cornell '77 validation test
+
+### Success Criteria
+- [x] Can score individual recordings (0-100)
+- [x] Can compare multiple recordings
+- [x] Presets produce expected results
+- [x] Cornell '77 test validates correctly
+- [x] All tests passing (189/190)
+- [x] TypeScript strict mode: 0 errors
+
+### Implementation Notes
+**Completed:** January 3, 2026
+
+**Files Created:**
+- [src/types/preferences.ts](../../src/types/preferences.ts) - User preference types and presets
+- [src/services/scoringEngine.ts](../../src/services/scoringEngine.ts) - Core scoring algorithm
+- [src/services/preferences.ts](../../src/services/preferences.ts) - Preference management
+- [src/services/recordingSelector.ts](../../src/services/recordingSelector.ts) - High-level selection API
+- [src/hooks/usePreferences.ts](../../src/hooks/usePreferences.ts) - Preference hooks
+- [src/hooks/useRecordingSelector.ts](../../src/hooks/useRecordingSelector.ts) - Selection hooks
+- [src/services/scoringEngine.test.ts](../../src/services/scoringEngine.test.ts) - 40 tests
+- [src/services/preferences.test.ts](../../src/services/preferences.test.ts) - 27 tests
+- [src/services/recordingSelector.test.ts](../../src/services/recordingSelector.test.ts) - 9 tests
+
+**Key Features:**
+- 5-component scoring: sourceType (35%), format (25%), communityRating (20%), lineage (10%), taper (10%)
+- Transparent scoring with detailed breakdown
+- User-configurable weights (must sum to 1.0)
+- localStorage persistence across sessions
+- Import/export for backup/sharing
+- Automatic re-scoring when preferences change
+
+**Test Results:** 76 new tests, all passing
+
+See [docs/phase5-summary.md](../phase5-summary.md) for detailed documentation.
 
 ---
 
 ## Summary of Remaining Phases
-
-**Phase 5: Recording Selection & Scoring (4-6 hours)**
-- Port Python scoring algorithm to TypeScript
-- Implement preference system
-- Test with Cornell '77 (multiple recordings)
 
 **Phase 6: React UI Foundation (8-12 hours)**
 - Main app structure
