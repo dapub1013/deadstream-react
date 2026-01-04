@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CORS Test - Archive.org Audio</title>
+</head>
+<body>
+  <h1>Archive.org CORS Test</h1>
+  <button onclick="testAudio()">Test Audio Stream</button>
+  <div id="status"></div>
+  <audio id="player" controls style="width: 100%; margin-top: 20px;"></audio>
+  
+  <script>
+    async function testAudio() {
+      const status = document.getElementById('status');
+      const player = document.getElementById('player');
+      
+      // Cornell '77 - known good URL
+      const testUrl = 'https://archive.org/download/gd1978-12-16.sonyecm250-no-dolby.walker-scotton.miller.82212.sbeok.flac16/gd78-12-16d1t05.mp3';
+      
+      status.textContent = 'Testing stream from archive.org...';
+      
+      try {
+        player.src = testUrl;
+        await player.play();
+        status.textContent = '[PASS] CORS works! Audio streaming successfully.';
+      } catch (err) {
+        status.textContent = `[FAIL] Error: ${err.message}`;
+        console.error('CORS test failed:', err);
+      }
+    }
+  </script>
+</body>
+</html>
