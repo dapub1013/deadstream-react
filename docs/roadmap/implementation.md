@@ -29,9 +29,9 @@ This remains a **learning journey, not a race**. Each phase will be completed wh
 - [x] Phase 1: Project Setup & Tooling
 - [x] Phase 2: Database Foundation (IndexedDB)
 - [x] Phase 3: Archive.org API Integration
+- [x] Phase 4: Audio Player Component
 
 ### To Be Started
-- [ ] Phase 4: Audio Player Component
 - [ ] Phase 5: Recording Selection & Scoring
 - [ ] Phase 6: React UI Foundation
 - [ ] Phase 7: Browse Screen Implementation
@@ -1318,20 +1318,39 @@ describe('AudioPlayer', () => {
 ```
 
 ### Deliverables
-- [ ] AudioPlayer class with playlist management
-- [ ] Audio context for global state
-- [ ] Event handling for play/pause/next/previous
-- [ ] Progress tracking
-- [ ] Volume control
-- [ ] Tests for player functionality
+- [x] AudioPlayer class with playlist management
+- [x] Audio context for global state
+- [x] Event handling for play/pause/next/previous
+- [x] Progress tracking
+- [x] Volume control
+- [x] Tests for player functionality
 
 ### Success Criteria
-- [ ] Can load and play audio from archive.org
-- [ ] Auto-advances to next track
-- [ ] Seek functionality works
-- [ ] Volume control responsive
-- [ ] Tests pass
-- [ ] Can explain: How does HTML5 Audio work?
+- [x] Can load and play audio from archive.org
+- [x] Auto-advances to next track
+- [x] Seek functionality works
+- [x] Volume control responsive
+- [x] Tests pass (28 tests, all passing)
+- [x] Can explain: How does HTML5 Audio work?
+
+### Implementation Notes
+**Completed:** January 3, 2026
+
+**Files Created:**
+- `src/services/audioPlayer.ts` - HTML5 audio player service with playlist management
+- `src/contexts/AudioContext.tsx` - React context for global audio state
+- `src/services/audioPlayer.test.ts` - Comprehensive test suite (28 tests)
+
+**Key Features:**
+- Event-driven state management (idle, loading, playing, paused, error)
+- Smart track navigation (restarts track if >3s, otherwise goes to previous)
+- Automatic playlist advancement
+- Seek functionality with boundary clamping
+- Volume control (0.0-1.0 range)
+- Full test coverage for all player operations
+- Clean separation between service layer and React state
+
+**Test Results:** 28/28 tests passing, no TypeScript errors
 
 ---
 

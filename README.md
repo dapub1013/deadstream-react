@@ -13,7 +13,7 @@ Single-purpose appliance with touchscreen interface, built with React + TypeScri
 DeadStream is a React web application that runs in Chromium kiosk mode on a Raspberry Pi 4, providing a dedicated interface for browsing and streaming 15,000+ Grateful Dead concerts from the Internet Archive.
 
 **Platform:** React + TypeScript + Chromium Kiosk
-**Status:** Phase 3 Complete - Archive.org API Integration
+**Status:** Phase 4 Complete - Audio Player Component
 **Created:** January 2, 2026
 
 ### Tech Stack
